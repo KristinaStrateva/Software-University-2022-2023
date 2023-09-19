@@ -1,0 +1,24 @@
+{
+  "name": "rockpaperscissorsbykristinastrateva",
+  "version": "1.0.0",
+  "description": "This is a simple console game \"Rock paper scissors\". It is played by two people and each of them have to choose one of elements - rock, paper or scissor. The winner is the one, who beats the other by its element. The rock beats the scissors, the scissors beats the paper and the paper beats the rock.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KristinaStrateva/RockPaperScissorsByKristinaStrateva.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KristinaStrateva/RockPaperScissorsByKristinaStrateva/issues"
+  },
+  "homepage": "https://github.com/KristinaStrateva/RockPaperScissorsByKristinaStrateva#readme",
+  "dependencies": {
+    "lit-html": "^2.7.5",
+    "page": "^1.11.6"
+  }
+}
