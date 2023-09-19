@@ -1,0 +1,24 @@
+{
+  "name": "random-sentences-generator_bykristinastrateva",
+  "version": "1.0.0",
+  "description": "This is a funny game that generates sentences by random words and the result can be hilaroius.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KristinaStrateva/Random-Sentences-Generator_byKristinaStrateva.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KristinaStrateva/Random-Sentences-Generator_byKristinaStrateva/issues"
+  },
+  "homepage": "https://github.com/KristinaStrateva/Random-Sentences-Generator_byKristinaStrateva#readme",
+  "dependencies": {
+    "lit-html": "^2.7.5",
+    "page": "^1.11.6"
+  }
+}
