@@ -13,5 +13,3 @@ function squareOfStars(input) {
 }
 
 squareOfStars(["2"]);
-
-//test
