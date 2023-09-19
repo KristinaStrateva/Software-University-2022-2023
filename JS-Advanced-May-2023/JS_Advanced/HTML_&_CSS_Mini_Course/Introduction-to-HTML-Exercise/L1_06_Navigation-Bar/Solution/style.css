@@ -1,0 +1,17 @@
+nav {
+    background: #d6d6c2;
+    text-align: center;
+    margin: 0%;
+    padding: 3px;
+}
+
+nav li {
+    display: inline-block;
+}
+
+nav li a{
+    padding: 15px;
+    color: #29a329;
+    text-decoration: none;
+
+}

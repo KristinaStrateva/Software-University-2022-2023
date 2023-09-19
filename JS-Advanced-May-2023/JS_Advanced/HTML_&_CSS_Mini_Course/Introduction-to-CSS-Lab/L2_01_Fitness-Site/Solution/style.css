@@ -1,0 +1,120 @@
+body {
+    font-family: Helvetica, sans-serif;
+    padding: 2rem 12rem;
+}
+
+/* Header */
+header p, nav ul li {
+    color: orange;
+    font-size: 20px;
+    padding: 0 0 20px 0;
+    margin: 0;
+}
+
+nav {
+    text-align: right;
+}
+
+nav ul li {
+    display: inline-block;
+}
+
+nav ul li a {
+    color: orange;
+    text-decoration: none;
+}
+
+header p {
+    float: left;
+    width: 40%;
+}
+
+/* Main */
+
+/* mainInfo */
+.mainInfo {
+    background-image: url(Images/picture.jpg);
+    background-position: center;
+    background-size: cover;
+    text-align: center;
+}
+
+.mainInfo h1 {
+    font-size: 30px;
+    color: white;
+    font-weight: bold;
+    padding: 280px 250px 20px 250px;
+}
+
+.mainInfo span {
+    color: orange;
+}
+
+.mainInfo button {
+    margin: 0 0 280px 0;
+    color: white;
+    background: orange;
+    border: none;
+    border-radius: 2px;
+    padding: 10px 17px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.mainInfo button:hover {
+    background: white;
+    color: orange;
+    cursor: pointer;
+}
+
+/* articles */
+.articles article {
+    display: inline-block;
+    width: 33%;
+    background: orange;
+    color: white;
+}
+
+.articles article:not(:last-child) {
+    margin-right: 1px;
+}
+
+.articles article h3 {
+    text-align: center;
+    padding: 35px 0px 15px 0;
+}
+
+.articles article p {
+    text-align: justify;
+    padding: 0 50px 35px 50px;
+}
+
+/* Footer */
+
+footer {
+    margin: 15px 0;
+}
+
+.copyright {
+    float: left;
+}
+
+.socialMedia {
+    text-align: right;
+}
+
+.socialMedia ul {
+    float: right;
+}
+
+.socialMedia ul li {
+    display: inline-block;
+}
+
+.socialMedia ul li:not(:last-child) {
+    padding-right: 30px;
+}
+
+.socialMedia ul li a {
+    text-decoration: none;
+}

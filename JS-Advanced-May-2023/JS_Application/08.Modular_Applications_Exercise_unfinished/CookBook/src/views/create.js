@@ -1,0 +1,30 @@
+// import page from "../../node_modules/page/page.mjs";
+import { html } from "../../node_modules/lit-html/lit-html.js";
+import { create } from "../api/recipe.js";
+import { createSubmitHandler } from "../utils.js";
+
+
+const createTemplate = (onSubmit) => html`
+<section id="create">
+    <article>
+        <h2>New Recipe</h2>
+        <form id="createForm" @submit=${onSubmit}>
+            <label>Name: <input type="text" name="name" placeholder="Recipe name"></label>
+            <label>Image: <input type="text" name="img" placeholder="Image URL"></label>
+            <label class="ml">Ingredients: <textarea name="ingredients" placeholder="Enter ingredients on separate lines"></textarea></label>
+            <label class="ml">Preparation: <textarea name="steps" placeholder="Enter preparation steps on separate lines"></textarea></label>
+            <input type="submit" value="Create Recipe">
+        </form>
+    </article>
+</section>
+`;
+
+async function onSubmit(ctx, data, event) {
+    await create(data);
+
+    ctx.page.redirect('/catalog');
+}
+
+export async function createPage(ctx) {
+    ctx.render(createTemplate(createSubmitHandler(ctx, onSubmit)));
+}

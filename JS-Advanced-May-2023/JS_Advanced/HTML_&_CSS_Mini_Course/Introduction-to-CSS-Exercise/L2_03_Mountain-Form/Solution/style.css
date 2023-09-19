@@ -1,0 +1,53 @@
+form {
+    border-radius: 10px;
+    width: 50%;
+    
+}
+
+form section {
+    display: inline-block;
+    font-family: Lato, sans-serif;
+}
+
+#grad {
+    background-image: linear-gradient(to bottom, #bfcce1, #aab5ce, #979ebb, #8687a8);
+}
+
+img {
+    width: 40%;
+    background-position: center;
+}
+
+form section:nth-child(1) {
+    width: 30%;
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    color: white;
+
+}
+
+form section:nth-child(1) p {
+    font-style: italic;
+}
+
+form section:nth-child(2) {
+    border: solid;
+    border-color: #38082A;
+    padding: 40px;
+}
+
+form section label {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    color: rgb(218, 217, 220);
+}
+
+form section input {
+    color: rgb(118, 115, 115);
+}
+
+input:last-child {
+    background: #38082A;
+    border-radius: 3px;
+}

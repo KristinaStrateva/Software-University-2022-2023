@@ -1,0 +1,42 @@
+body {
+    font-family: Open Sans, sans-serif;
+}
+
+header article {
+    display: inline-block;
+    border-left: 2px;
+    border-style: inset;
+    border-color: #656565;
+}
+
+header article:nth-child(1) {
+    padding-left: 200px;
+}
+
+header article:nth-child(2) {
+    float: right;
+    padding-right: 435px;
+}
+
+header article h2 {
+    font-size: xx-large;
+    font-weight: lighter;
+}
+
+header article p {
+    color: #656565;
+}
+
+main article {
+    display: inline-block;
+    width: 21%;
+}
+
+main article:nth-child(1) {
+    padding-left: 200px;
+}
+
+main article:nth-child(2) {
+    padding-left: 30px;
+    padding-right: 30px;
+}

@@ -1,0 +1,93 @@
+body {
+    font-family: Open Sans, sans-serif;
+}
+
+header nav {
+    background: white;
+    padding: 3px 0px 3px 0px;
+    margin: -8px;
+    text-align: center;
+    width: 800px;
+}
+
+header nav ul li {
+    display: inline-block;
+}
+
+header nav ul li a {
+    text-decoration: none;
+    color: rgb(214, 116, 114);
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+article:nth-child(1) {
+    background-image: url(Images/header-flower.png);
+    display: grid;
+    opacity: 0.7;
+    width: 800px;
+    height: 350px;
+    padding: 50px;
+    background-position: center;
+    background-size: cover;
+    text-align: center;
+    color: white;
+}
+
+article:nth-child(1) hr {
+    width: 60px;
+    height: 2px;
+    background: rgb(214, 116, 114);
+}
+
+article:nth-child(2) {
+    background: rgb(214, 116, 114);
+    color: white;
+    width: 800px;
+    height: 150px;
+    padding: 50px;
+    background-position: center;
+    background-size: cover;
+    text-align: center;
+}
+
+article:nth-child(2) hr {
+    width: 60px;
+    height: 2px;
+    background: white;
+}
+
+button {
+    background: white;
+    border: none;
+    border-radius: 5px;
+    color: rgb(214, 116, 114);
+    width: 120px;
+    height: 35px;
+    font-weight: bold;
+}
+
+section {
+    text-align: center;
+    width: 900px;
+}
+
+section hr {
+    width: 60px;
+    height: 2px;
+    background: rgb(214, 116, 114);
+}
+
+section article {
+    display: inline-block;
+    width: 15%;
+    padding: 15px;
+}
+
+footer {
+    background: rgb(214, 116, 114);
+    color: white;
+    width: 900px;
+    height: 40px;
+    text-align: center;
+}

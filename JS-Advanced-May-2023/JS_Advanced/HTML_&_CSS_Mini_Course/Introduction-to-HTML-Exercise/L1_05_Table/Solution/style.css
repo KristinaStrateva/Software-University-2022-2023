@@ -1,0 +1,12 @@
+table, th, td {
+    border: 0.5px solid black;
+    border-collapse: collapse;
+}
+
+thead {
+    text-align: center;
+}
+
+tbody, tfoot {
+    text-align: right;
+}
