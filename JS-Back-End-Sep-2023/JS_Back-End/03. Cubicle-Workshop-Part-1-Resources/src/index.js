@@ -1,10 +1,11 @@
 const express = require('express');
 const handlebars = require('express-handlebars');
+const expressConfigurator = require('./config/express');
 
 const app = express();
 const PORT = 5000;
 
-app.use(express.static('src/public'));
+expressConfigurator(app);
 
 app.engine('hbs', handlebars.engine({
     extname: 'hbs'
