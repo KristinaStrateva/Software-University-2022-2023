@@ -35,6 +35,10 @@ exports.getAllCubes = () => {
     return cubes.slice();
 }
 
+exports.getCubeById = (id) => {
+    return cubes.find(cube => cube.id === id);
+}
+
 exports.createCube = (name, description, imageUrl, difficultyLevel) => {
     const newCube = {
         id: uniqueId(),
