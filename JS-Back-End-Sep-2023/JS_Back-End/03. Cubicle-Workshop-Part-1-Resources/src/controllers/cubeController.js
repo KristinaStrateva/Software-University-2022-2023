@@ -19,6 +19,10 @@ router.get('/:cubeId/details', (req, res) => {
 
     const currCube = cubeManager.getCubeById(cubeId);
 
+    if (!currCube) {
+        res.redirect('/404');
+    }
+
     res.render('details', currCube);
 });
 
