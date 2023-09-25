@@ -1,3 +1,4 @@
+const res = require('express/lib/response');
 const uniqueId = require('uniqid');
 
 const cubes = [
@@ -31,8 +32,22 @@ const cubes = [
     },
 ];
 
-exports.getAllCubes = () => {
-    return cubes.slice();
+exports.getAllCubes = (search, from, to) => {
+    let result = cubes.slice();
+
+    if (search) {
+        result = result.filter(cube => cube.name.toLowerCase().includes(search.toLowerCase()));
+    }
+
+    if (from) {
+        result = result.filter(cube => cube.difficultyLevel >= Number(from));
+    }
+
+    if (to) {
+        result = result.filter(cube => cube.difficultyLevel <= Number(to));
+    }
+
+    return result;
 }
 
 exports.getCubeById = (id) => {
