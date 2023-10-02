@@ -1,0 +1,48 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+* {
+    box-sizing: inherit;
+}
+
+body {
+    font: inherit;
+}
+
+html {
+    box-sizing: border-box;
+    font-family: Helvetica, sans-serif;
+}
+
+body {
+    background-color: #eeeeee;
+    color: #333333;
+    max-width: 50em;
+    margin: 4em 3em;
+    line-height: 1.5em;
+}
+
+article {
+    position: relative;
+    left: 0;
+}
+
+h1, h2, p, ul, img {
+    padding-bottom: 1.5em;
+}
+
+ul {
+    padding-left: 2.5em;
+}
+
+img {
+    width: 25em;
+}
+
+aside {
+    position: absolute;
+    right: 12em;
+    top: 4em;
+}
