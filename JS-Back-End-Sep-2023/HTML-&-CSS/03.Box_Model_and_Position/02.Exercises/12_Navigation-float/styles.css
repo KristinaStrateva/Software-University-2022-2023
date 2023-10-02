@@ -1,0 +1,118 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+* {
+    box-sizing: inherit;
+}
+
+html {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #eeeeee;
+}
+
+main {
+    width: 60vw;
+    padding-left: 10em;
+    padding-top: 2em;
+}
+
+h1, h2, h3, p {
+    font-family: Georgia, serif;
+    padding-bottom: 0.8em;
+}
+
+a {
+    text-decoration: none;
+    color: #006600;
+}
+
+img {
+    width: 130px;
+    border: 5px solid #ffffff;
+    outline: 2px solid black;
+    box-shadow: 0 0 1em 0.5em rgba(0, 0, 0, 0.5) inset;
+}
+
+blockquote {
+    border-left: 5px solid #b6b2b2;
+    font-family: Georgia, serif;
+    font-style: italic;
+    float: right;
+    line-height: 1.3;
+    height: 10em;
+}
+
+aside {
+    position: absolute;
+    top: 9.5em;
+    right: 25em;
+}
+
+aside h3 {
+    padding-bottom: 1em;
+}
+
+blockquote p {
+    padding-left: 1.5em;
+}
+
+blockquote footer {
+    text-align: right;
+}
+
+.header-nav {
+    margin: 5em 10em 0 10em;
+    border-bottom: 2px solid rgb(23, 22, 22);
+    position: relative;
+}
+
+.header-nav p {
+    display: block;
+    font-size: 2.5em;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 0;
+}
+
+.header-nav nav {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.header-nav nav ul {
+    text-decoration: none;
+}
+
+.header-nav nav ul li {
+    display: inline-block;
+    margin-left: 1.7em;
+}
+
+div > p, div > blockquote {
+    width: 49%;
+    display: inline-block;
+}
+
+aside section:first-child nav {
+    padding-bottom: 1em;
+}
+
+main article:nth-child(1) section img {
+    float: right;
+    margin-left: 1.5em;
+    margin-bottom: 1.5em;
+}
+
+main article:nth-child(3) section img {
+    float: left;
+    margin-right: 1.5em;
+    margin-bottom: 1.5em;
+}
+
