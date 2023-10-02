@@ -1,0 +1,38 @@
+li {
+    display: inline-block;
+    list-style: none;
+    margin-inline: 0.5em;
+}
+
+a {
+    display: block;
+    text-decoration: none;
+    border-radius: 50%;
+    background-color: #e9e3e3;
+    width: 3em;
+    height: 3em;
+    position: relative;
+    text-align: center;
+}
+
+.fa-brands {
+    font-size: 1.5em;
+    padding-top: 0.5em;
+    color: #333232;
+}
+
+.fa-square-facebook:hover {
+    color: rgb(55, 88, 169);
+}
+
+.fa-twitter:hover, .fa-linkedin:hover {
+    color: rgb(21, 186, 241);
+}
+
+.fa-google-plus:hover {
+    color: rgb(196, 52, 16);
+}
+
+.fa-instagram:hover {
+    color: rgb(65, 96, 154);
+}
