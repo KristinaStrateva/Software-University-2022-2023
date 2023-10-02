@@ -1,0 +1,63 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+* {
+    box-sizing: inherit;
+}
+
+html {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #eeeeee;
+}
+
+.card {
+    display: block;
+    background-color: #ffffff;
+    width: 35vw;
+    height: 60vh;
+    border-radius: 0.5em;
+    overflow: hidden;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 7px 7px 30px 2px #989494eb;
+}
+
+.card div > img {
+    width: 35vw;
+    height: auto;
+}
+
+.card div > h3 {
+    font-size: 1em;
+    line-height: 1.2;
+    font-family: Georgia, serif;
+    padding-top: 1.2em;
+    padding-left: 1.7em;
+}
+
+.card div > p {
+    line-height: 1.5;
+    padding: 1em 1em 1em 1.7em;
+}
+
+.card div > a {
+    display: block;
+    text-decoration: none;
+    color: white;
+    border-radius: 0.2em;
+    background-color: #009900;
+    width: 80px;
+    height: 30px;
+    text-align: center;
+    padding-top: 0.3em;
+    position: absolute;
+    bottom: 1.5em;
+    right: 1.5em;
+}
