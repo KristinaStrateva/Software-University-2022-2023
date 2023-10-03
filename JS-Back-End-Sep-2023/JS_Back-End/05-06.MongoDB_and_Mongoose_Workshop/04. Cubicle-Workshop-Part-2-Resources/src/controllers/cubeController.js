@@ -6,18 +6,23 @@ router.get('/create', (req, res) => {
     res.render('create');
 });
 
-router.post('/create', (req, res) => {
-    const {name, description, imageUrl, difficultyLevel} = req.body;
+router.post('/create', async (req, res) => {
+    const { name, description, imageUrl, difficultyLevel } = req.body;
 
-    cubeManager.createCube(name, description, imageUrl, difficultyLevel);
+    await cubeManager.createCube({
+        name,
+        description,
+        imageUrl,
+        difficultyLevel: Number(difficultyLevel),
+    });
 
     res.redirect('/');
 });
 
-router.get('/:cubeId/details', (req, res) => {
+router.get('/:cubeId/details', async (req, res) => {
     const cubeId = req.params.cubeId;
 
-    const currCube = cubeManager.getCubeById(cubeId);
+    const currCube = await cubeManager.getCubeById(cubeId).lean();
 
     if (!currCube) {
         res.redirect('/404');
