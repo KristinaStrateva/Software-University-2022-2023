@@ -2,7 +2,7 @@ const Accessory = require('../models/Accessory');
 
 exports.getAllAccessories = () => Accessory.find();
 
-exports.createAccessory = async ({name, description, imageUrl}) => {
+exports.createAccessory = async ({ name, description, imageUrl }) => {
     const accessory = new Accessory({
         name,
         description,
@@ -13,3 +13,5 @@ exports.createAccessory = async ({name, description, imageUrl}) => {
 
     return accessory;
 };
+
+exports.getExceptThese = (accessoriesIds) => Accessory.find({ _id: { $nin: accessoriesIds } });
