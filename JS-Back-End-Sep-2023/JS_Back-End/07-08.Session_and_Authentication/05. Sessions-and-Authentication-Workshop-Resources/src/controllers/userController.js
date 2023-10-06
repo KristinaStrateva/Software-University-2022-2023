@@ -12,3 +12,12 @@ router.post('/register', async (req, res) => {
     res.redirect('/users/login');
 });
 
+router.get('/login', (req, res) => res.render('users/login'));
+
+router.post('/login', (req, res) => {
+    const {username, password} = req.body;
+
+    res.redirect('/');
+})
+
+module.exports = router;
