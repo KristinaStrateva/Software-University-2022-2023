@@ -4,7 +4,7 @@ const cubeManager = require('../managers/cubeManager');
 const accessoryManager = require('../managers/accessoryManager');
 
 router.get('/create', (req, res) => {
-    res.render('cube/create');
+    res.render('cubes/create');
 });
 
 router.post('/create', async (req, res) => {
@@ -29,7 +29,7 @@ router.get('/:cubeId/details', async (req, res) => {
         res.redirect('/404');
     }
 
-    res.render('cube/details', currCube);
+    res.render('cubes/details', currCube);
 });
 
 router.get('/:cubeId/attach-accessory', async (req, res) => {
@@ -38,7 +38,7 @@ router.get('/:cubeId/attach-accessory', async (req, res) => {
 
     const hasAccessories = accessories.length > 0;
 
-    res.render('accessory/attach', { cube, accessories, hasAccessories });
+    res.render('accessories/attach', { cube, accessories, hasAccessories });
 });
 
 router.post('/:cubeId/attach-accessory', async (req, res) => {
