@@ -17,7 +17,9 @@ router.get('/login', (req, res) => res.render('users/login'));
 router.post('/login', async (req, res) => {
     const { username, password } = req.body;
 
-    const user = await userManager.login(username, password);
+    const token = await userManager.login(username, password);
+
+    res.cookie('auth', token, { httpOnly: true });
 
     res.redirect('/');
 });
