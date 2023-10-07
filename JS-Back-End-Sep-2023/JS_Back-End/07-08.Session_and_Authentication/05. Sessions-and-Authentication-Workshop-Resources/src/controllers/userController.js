@@ -1,6 +1,7 @@
 const router = require('express').Router();
 
 const userManager = require('../managers/userManager');
+const { SECRET } = require('../config/config');
 
 router.get('/register', (req, res) => res.render('users/register'));
 
