@@ -20,12 +20,13 @@ exports.getAllCubes = async (search, from, to) => {
 
 exports.getCubeById = (id) => Cube.findById(id).populate('accessories');
 
-exports.createCube = async ({name, description, imageUrl, difficultyLevel}) => {
+exports.createCube = async ({name, description, imageUrl, difficultyLevel, owner}) => {
     const cube = new Cube({
         name,
         description,
         imageUrl,
         difficultyLevel,
+        owner
     });
 
     await cube.save();
