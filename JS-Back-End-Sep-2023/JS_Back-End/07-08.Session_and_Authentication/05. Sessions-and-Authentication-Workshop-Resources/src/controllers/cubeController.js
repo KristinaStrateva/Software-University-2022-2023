@@ -43,7 +43,7 @@ router.get('/:cubeId/attach-accessory', async (req, res) => {
 });
 
 router.post('/:cubeId/attach-accessory', async (req, res) => {
-    const {accessory: accessoryId} = req.body;
+    const { accessory: accessoryId } = req.body;
     const cubeId = req.params.cubeId;
 
     await cubeManager.attachAccessory(cubeId, accessoryId);
@@ -55,6 +55,12 @@ router.get('/:cubeId/delete', async (req, res) => {
     const currCube = await cubeManager.getCubeById(req.params.cubeId).lean();
 
     res.render('cubes/delete', currCube);
+});
+
+router.post('/:cubeId/delete', async (req, res) => {
+    await cubeManager.deleteCube(req.params.cubeId);
+
+    res.redirect('/');
 });
 
 module.exports = router;

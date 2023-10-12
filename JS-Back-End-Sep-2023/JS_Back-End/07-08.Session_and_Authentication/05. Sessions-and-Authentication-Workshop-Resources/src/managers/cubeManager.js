@@ -41,3 +41,5 @@ exports.attachAccessory = async (cubeId, accessoryId) => {
 
     return cube.save();
 };
+
+exports.deleteCube = (cubeId) => Cube.findByIdAndDelete(cubeId);
