@@ -56,7 +56,9 @@ router.post('/:cubeId/attach-accessory', async (req, res) => {
 router.get('/:cubeId/delete', async (req, res) => {
     const currCube = await cubeManager.getCubeById(req.params.cubeId).lean();
 
-    res.render('cubes/delete', currCube);
+    const options = generateDifficultyLevelOptionsViewData(currCube.difficultyLevel);
+
+    res.render('cubes/delete', { currCube, options });
 });
 
 router.post('/:cubeId/delete', async (req, res) => {
@@ -68,7 +70,9 @@ router.post('/:cubeId/delete', async (req, res) => {
 router.get('/:cubeId/edit', async (req, res) => {
     const currCube = await cubeManager.getCubeById(req.params.cubeId).lean();
 
-    res.render('cubes/edit', { currCube });
+    const options = generateDifficultyLevelOptionsViewData(currCube.difficultyLevel);
+
+    res.render('cubes/edit', { currCube, options });
 });
 
 router.post('/:cubeId/edit', async (req, res) => {
@@ -78,5 +82,24 @@ router.post('/:cubeId/edit', async (req, res) => {
 
     res.redirect(`/cubes/${req.params.cubeId}/details`);
 });
+
+function generateDifficultyLevelOptionsViewData(difficultyLevel) {
+    const titles = [
+        'Very Easy',
+        'Easy',
+        'Medium (Standard 3x3)',
+        'Intermediate',
+        'Expert',
+        'Hardcore'
+    ];
+
+    const options = titles.map((title, index) => ({
+        title: `${index + 1} - ${title}`,
+        value: index + 1,
+        selected: Number(difficultyLevel) === index + 1,
+    }));
+
+    return options;
+}
 
 module.exports = router;
