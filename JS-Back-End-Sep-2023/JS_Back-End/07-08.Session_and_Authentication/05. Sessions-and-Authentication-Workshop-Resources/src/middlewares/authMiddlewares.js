@@ -1,7 +1,7 @@
 const jwt = require('../lib/jwt');
 const { SECRET } = require('../config/config');
 
-exports.auth = async (req, res, next) => {
+exports.setAuthentication = async (req, res, next) => {
     const token = req.cookies['auth'];
 
     if (token) {
@@ -23,4 +23,12 @@ exports.auth = async (req, res, next) => {
     } else {
         next();
     }
+};
+
+exports.checkAuthentication = (req, res, next) => {
+    if (!req.user) {
+        return res.redirect('/users/login');
+    }
+
+    next();
 };
