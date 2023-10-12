@@ -7,6 +7,8 @@ router.get('/', async (req, res) => {
 
     const cubes = await cubeManager.getAllCubes(search, from, to);
 
+    // const isUser = 
+
     res.render('index', { cubes, search, from, to });
 });
 
