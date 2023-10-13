@@ -1,8 +1,7 @@
 const router = require('express').Router();
 
 const userManager = require('../managers/userManager');
-// const { SECRET } = require('../config/config');
-const { exportErrorMessages, extractErrorMessages } = require('../utils/errorHelpers');
+const { extractErrorMessages } = require('../utils/errorHelpers');
 
 router.get('/register', (req, res) => res.render('users/register'));
 
@@ -26,11 +25,20 @@ router.get('/login', (req, res) => res.render('users/login'));
 router.post('/login', async (req, res) => {
     const { username, password } = req.body;
 
-    const token = await userManager.login(username, password);
+    try {
+        const token = await userManager.login(username, password);
 
-    res.cookie('auth', token, { httpOnly: true });
+        res.cookie('auth', token, { httpOnly: true });
 
-    res.redirect('/');
+        res.redirect('/');
+
+    } catch (error) {
+        const errorMessages = extractErrorMessages(error);
+
+        res.status(404).render('users/login', { errorMessages });
+    }
+
+
 });
 
 router.get('/logout', (req, res) => {
