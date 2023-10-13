@@ -1,7 +1,8 @@
 const router = require('express').Router();
 
 const userManager = require('../managers/userManager');
-const { SECRET } = require('../config/config');
+// const { SECRET } = require('../config/config');
+const { exportErrorMessages, extractErrorMessages } = require('../utils/errorHelpers');
 
 router.get('/register', (req, res) => res.render('users/register'));
 
@@ -14,9 +15,9 @@ router.post('/register', async (req, res) => {
         res.redirect('/users/login');
 
     } catch (error) {
-        const errorMessages = Object.values(error.errors).map(x => x.message);
+        const errorMessages = extractErrorMessages(error);
 
-        res.status(404).render('users/register', { errorMessages: errorMessages });
+        res.status(404).render('users/register', { errorMessages });
     }
 });
 
