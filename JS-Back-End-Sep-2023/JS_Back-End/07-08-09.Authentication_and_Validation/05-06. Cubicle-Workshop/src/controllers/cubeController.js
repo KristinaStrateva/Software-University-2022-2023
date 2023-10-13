@@ -5,6 +5,7 @@ const cubeManager = require('../managers/cubeManager');
 const accessoryManager = require('../managers/accessoryManager');
 const viewHelpers = require('../utils/viewHelpers');
 const { ownerCheck } = require('../utils/ownerCheck');
+const { extractErrorMessages } = require('../utils/errorHelpers');
 
 router.get('/create', checkAuthentication, (req, res) => {
     res.render('cubes/create');
@@ -13,15 +14,22 @@ router.get('/create', checkAuthentication, (req, res) => {
 router.post('/create', checkAuthentication, async (req, res) => {
     const { name, description, imageUrl, difficultyLevel } = req.body;
 
-    await cubeManager.createCube({
-        name,
-        description,
-        imageUrl,
-        difficultyLevel: Number(difficultyLevel),
-        owner: req.user._id,
-    });
+    try {
+        await cubeManager.createCube({
+            name,
+            description,
+            imageUrl,
+            difficultyLevel: Number(difficultyLevel),
+            owner: req.user._id,
+        });
 
-    res.redirect('/');
+        res.redirect('/');
+
+    } catch (error) {
+        const errorMessages = extractErrorMessages(error);
+
+        res.status(404).render('cubes/create', { errorMessages });
+    }
 });
 
 router.get('/:cubeId/details', async (req, res) => {
@@ -54,9 +62,17 @@ router.post('/:cubeId/attach-accessory', checkAuthentication, async (req, res) =
     const { accessory: accessoryId } = req.body;
     const cubeId = req.params.cubeId;
 
-    await cubeManager.attachAccessory(cubeId, accessoryId);
+    try {
+        await cubeManager.attachAccessory(cubeId, accessoryId);
 
-    res.redirect(`/cubes/${cubeId}/details`);
+        res.redirect(`/cubes/${cubeId}/details`);
+
+    } catch (error) {
+        const errorMessages = extractErrorMessages(error);
+        const cubes = await cubeManager.getAllCubes();
+
+        res.status(404).render('index', {cubes, undefined, undefined, undefined, errorMessages });
+    }
 });
 
 router.get('/:cubeId/delete', checkAuthentication, async (req, res) => {
@@ -77,7 +93,7 @@ router.post('/:cubeId/delete', checkAuthentication, async (req, res) => {
 
 router.get('/:cubeId/edit', checkAuthentication, async (req, res) => {
     const currCube = await cubeManager.getCubeById(req.params.cubeId).lean();
-    
+
     ownerCheck(currCube, req, res);
 
     const options = viewHelpers.generateDifficultyLevelOptionsViewData(currCube.difficultyLevel);
@@ -88,9 +104,16 @@ router.get('/:cubeId/edit', checkAuthentication, async (req, res) => {
 router.post('/:cubeId/edit', checkAuthentication, async (req, res) => {
     const cubeData = req.body;
 
-    await cubeManager.updateCube(req.params.cubeId, cubeData);
+    try {
+        await cubeManager.updateCube(req.params.cubeId, cubeData);
 
-    res.redirect(`/cubes/${req.params.cubeId}/details`);
+        res.redirect(`/cubes/${req.params.cubeId}/details`);
+
+    } catch (error) {
+        const errorMessages = extractErrorMessages(error);
+
+        res.status(404).render('cubes/edit', { errorMessages });
+    }
 });
 
 module.exports = router;
