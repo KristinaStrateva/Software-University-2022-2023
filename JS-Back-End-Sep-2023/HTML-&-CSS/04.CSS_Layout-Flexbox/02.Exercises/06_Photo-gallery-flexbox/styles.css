@@ -1,0 +1,41 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body,
+.gallery,
+ul,
+li {
+    display: flex;
+}
+
+body {
+    padding: 5em;
+    justify-content: center;
+    background-color: #DDD;
+}
+
+ul {
+    flex-wrap: wrap;
+    gap: 5em;
+}
+
+li {
+    flex-basis: 30%;
+    background-color: white;
+    border: 10px solid black;
+    align-items: center;
+    list-style: none;
+    box-shadow:
+    0 0 1.2em 0.2em, rgba(0, 0, 0, 0.3),
+    0 0 0.3em 0.1em, rgba(0, 0, 0, 0.3) inset;
+}
+
+img {
+    display: block;
+    margin: 3em 1em;
+    width: 100%;
+    height: auto;
+}
