@@ -1,0 +1,111 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: sans-serif;
+}
+
+body {
+    background-color: rgb(238, 238, 238);
+}
+
+h1, h2 {
+    font-family: Georgia, serif;
+}
+
+article, aside {
+    margin-top: 3em;
+}
+
+p {
+    margin-top: 1em;
+}
+
+main {
+    flex-basis: 60%;
+}
+
+blockquote {
+    font-family: Georgia, serif;
+    font-style: italic;
+    color: #696363;
+}
+
+img {
+    display: block;
+    background-color: rgb(255, 255, 255);
+    padding: 0.5em;
+    border: 4px solid black;
+}
+
+ul {
+    padding: 0.7em 0 0 2.5em;
+}
+
+a {
+    display: block;
+    line-height: 1.5;
+    text-decoration: none;
+    color: rgb(0, 153, 0);
+}
+
+.page, .inside, .blockquote {
+    display: flex;
+}
+
+.page {
+    flex-direction: column;
+    max-width: 75em;
+    margin: 2em auto;
+}
+
+.inside {
+    gap: 5em;
+}
+
+.blockquote {
+    gap: 1em;
+}
+
+.page > header {
+    flex-basis: 100%;
+    border-bottom: 3px solid black;
+    padding-bottom: 2em;
+}
+
+.blockquote > p {
+    flex-basis: 200%;
+    border-right: 5px solid #DDD;
+    padding-right: 1em;
+}
+
+.blockquote > blockquote p {
+    padding-bottom: 1.5em;
+}
+
+.blockquote > blockquote footer {
+    text-align: right;
+}
+
+.page > header > p {
+    font-size: 50px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+aside > section:nth-child(1) {
+    padding-bottom: 2em;
+}
+
+.inside article:nth-child(1) section img {
+    float: right;
+    margin: 0 0 1em 2em;
+}
+
+.inside article:nth-child(3) section img {
+    float: left;
+    margin: 0 2em 1em 0;
+}
