@@ -1,0 +1,22 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font: 16px/1.5 Helvetica, sans-serif;
+}
+
+section {
+    display: flex;
+    margin: 10em auto;
+    justify-content: space-between;
+    max-width: 70vw;
+    gap: 5em;
+}
+
+h2 {
+    font: 30px/1.2 Georgia, serif;
+    padding-bottom: 0.5em;
+}
