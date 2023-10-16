@@ -1,0 +1,59 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font: 16px/1.5 sans-serif;
+}
+
+body {
+    padding: 2em;
+}
+
+span {
+    border: 1px solid black;
+    text-align: center;
+    padding-top: 1em;
+}
+
+.container,
+.week,
+.notes {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.container {
+    max-width: 65vw;
+}
+
+.week {
+    flex-basis: 80%;
+}
+
+.notes {
+    flex-direction: column;
+    flex-basis: 20%;
+}
+
+.week span {
+    flex-grow: 1;
+    height: 100px;
+    width: auto;
+    font-size: 12px;
+}
+
+.week span:nth-child(1),
+span:nth-child(7) {
+    flex-basis: 100%;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.notes span {
+    height: 200px;
+    width: auto;
+    font-weight: bold;
+}
