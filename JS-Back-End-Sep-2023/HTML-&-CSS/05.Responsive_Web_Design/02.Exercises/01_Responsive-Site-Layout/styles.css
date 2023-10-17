@@ -1,0 +1,79 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 2em;
+    background-color: white;
+    gap: 0.5em;
+}
+
+header, main > nav, main > section, footer {
+    background-color: rgb(129, 198, 241);
+    border-radius: 0.5em;
+}
+
+header, main > nav, main > section {
+    padding: 3rem 1.5rem;
+}
+
+header, footer {
+    flex-basis: 100%;
+}
+
+li {
+    display: block;
+    line-height: 2;
+}
+
+main {
+    display: flex;
+    flex-basis: 100%;
+    gap: 0.5em;
+}
+
+nav, section {
+    flex-basis: 100%;
+}
+
+section li {
+    padding-left: 2em;
+}
+
+a {
+    text-decoration: none;
+    color: rgb(114, 21, 151);
+    line-height: 3;
+}
+
+header a {
+    color: black;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+}
+
+footer {
+    padding: 1rem;
+}
+
+header > p, section > p {
+    font-size: 40px;
+    font-weight: bold;
+}
+
+section > p {
+    padding-bottom: 0.5em;
+}
+
+@media (max-width: 500px) {
+    main {
+        flex-direction: column;
+    }
+}
