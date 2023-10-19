@@ -27,4 +27,10 @@ router.post('/create', async (req, res) => {
     }
 });
 
+router.get('/catalog', async (req, res) => {
+    const photos = await photoManager.getAllPhotos().lean();
+
+    res.render('photos/catalog', { photos });
+});
+
 module.exports = router;
