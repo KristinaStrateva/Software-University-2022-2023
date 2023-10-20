@@ -40,4 +40,15 @@ router.get('/catalog/:photoId/details', async (req, res) => {
     res.render('photos/details', { photo, isOwner });
 });
 
+router.get('/:photoId/delete', async (req, res) => {
+    try {
+        await photoManager.delete(req.params.photoId);
+    
+        res.redirect('/photos/catalog');
+
+    } catch (error) {
+        res.redirect(`/photos/catalog/${req.params.photoId}/details`, {error: extractErrorMessages(error)});
+    }
+});
+
 module.exports = router;
