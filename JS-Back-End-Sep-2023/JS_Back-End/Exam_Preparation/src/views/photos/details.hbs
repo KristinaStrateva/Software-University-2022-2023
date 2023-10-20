@@ -47,9 +47,10 @@
                         <p class="petAge">Age: {{photo.age}}</p>
                     </div>
 
+                    {{#if areComments}}
                     <div class="comments">
                         <div class="comments-top">
-                            {{#each comments}}
+                            {{#each photo.comments}}
                             <div class="userDetails">
                                 <div class="comment-data">
                                     <div class="profilepic">
@@ -59,30 +60,27 @@
                                             </div>
                                         </div>
                                     </div>
-
-                                    <!--User's username-->
-                                    <p><b>{{username}}</b>- {{comment}}</p>
+                                    <p><b>{{user.username}}</b>- {{comment}}</p>
                                 </div>
                             </div>
                             {{/each}}
                         </div>
                     </div>
+                    {{/if}}
+
                 </div>
 
                 {{#if isAuthenticated}}
                 {{#unless isOwner}}
                 <div class="addComments">
-                    <!-- Start Add Comments Form -->
-                    <form method="#" action="#">
-                        <textarea id="comment-textarea" name="" cols="40" rows="10"
-                            placeholder="Add comment..."></textarea>
-                        <!-- Post Comments Button -->
+                    <form action="/photos/catalog/{{photo._id}}/comments" method="POST">
+                        <textarea id="comment-textarea" name="comment" cols="40" rows="10" placeholder="Add comment..."></textarea>
                         <button type="submit">Post</button>
                     </form>
                 </div>
                 {{/unless}}
                 {{/if}}
-                
+
             </div>
         </div>
     </div>

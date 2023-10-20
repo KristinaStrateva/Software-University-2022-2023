@@ -36,8 +36,20 @@ router.get('/catalog', async (req, res) => {
 router.get('/catalog/:photoId/details', async (req, res) => {
     const photo = await photoManager.getPhotoById(req.params.photoId).lean();
     const isOwner = req.user?._id == photo.owner._id;
+    // const comments = await photoManager.getAllComments(req.params.photoId).lean();
+    const areComments = photo.comments.length;
 
-    res.render('photos/details', { photo, isOwner });
+    res.render('photos/details', { photo, isOwner, areComments });
+});
+
+router.post('/catalog/:photoId/comments', async (req, res) => {
+    const { comment } = req.body;
+    const photoId = req.params.photoId;
+    const userId = req.user._id;
+
+    await photoManager.addComment(photoId, { user: userId, comment });
+
+    res.redirect(`/photos/catalog/${photoId}/details`);
 });
 
 router.get('/:photoId/delete', async (req, res) => {
