@@ -43,14 +43,33 @@ router.get('/catalog/:photoId/details', async (req, res) => {
 router.get('/:photoId/delete', async (req, res) => {
     try {
         await photoManager.delete(req.params.photoId);
-    
+
         res.redirect('/photos/catalog');
 
     } catch (error) {
         const photo = await photoManager.getPhotoById(req.params.photoId).lean();
         const isOwner = req.user?._id == photo.owner._id;
 
-        res.render('photos/details', {error: 'Unsuccessfully deleted photo!', photo, isOwner});
+        res.render('photos/details', { error: 'Unsuccessfully deleted photo!', photo, isOwner });
+    }
+});
+
+router.get('/:photoId/edit', async (req, res) => {
+    const photo = await photoManager.getPhotoById(req.params.photoId).lean();
+
+    res.render('photos/edit', { photo });
+});
+
+router.post('/:photoId/edit', async (req, res) => {
+    const photoData = req.body;
+
+    try {
+        await photoManager.update(req.params.photoId, photoData);
+
+        res.redirect(`/photos/catalog/${req.params.photoId}/details`);
+
+    } catch (error) {
+        res.render('photos/edit', { error: 'Unsuccessfully updated photo!', photoData });
     }
 });
 
