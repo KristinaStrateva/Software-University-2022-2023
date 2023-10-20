@@ -30,13 +30,9 @@ exports.register = async (userData) => {
         throw new Error('This username already exists!');
     }
 
-    return User.create(userData);
+    const createdUser = await User.create(userData);
 
-    // If after register we have to be automatically logged in:
+    const token = await generateToken(createdUser, SECRET);
 
-    // const createdUser = await User.create(userData);
-
-    // const token = await generateToken(createdUser, SECRET);
-
-    // return token;
+    return token;
 };
