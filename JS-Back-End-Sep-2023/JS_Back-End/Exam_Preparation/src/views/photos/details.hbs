@@ -37,7 +37,7 @@
                 <div class="imgBx">
                     <img src="{{photo.imageUrl}}" alt="{{photo.name}}" class="cover">
                 </div>
-                
+
                 <div class="bottom">
                     <p class="message">
                         <b class="petDescription">{{photo.description}}</b>
@@ -46,56 +46,31 @@
                         <p class="petName">Name: {{photo.name}}</p>
                         <p class="petAge">Age: {{photo.age}}</p>
                     </div>
+
                     <div class="comments">
                         <div class="comments-top">
+                            {{#each comments}}
                             <div class="userDetails">
                                 <div class="comment-data">
                                     <div class="profilepic">
                                         <div class="profile_img">
                                             <div class="image">
-                                                <!-- User Profile Image -->
-                                                <img src="/static/images/person.png" alt="img8">
+                                                <img src="/images/person.png" alt="img8">
                                             </div>
                                         </div>
                                     </div>
 
                                     <!--User's username-->
-                                    <p><b>StevIvanov</b>- OMG where can i get one</p>
+                                    <p><b>{{username}}</b>- {{comment}}</p>
                                 </div>
                             </div>
-                            <div class="userDetails">
-                                <div class="comment-data">
-                                    <div class="profilepic">
-                                        <div class="profile_img">
-                                            <div class="image">
-                                                <!-- User Profile Image -->
-                                                <img src="/static/images/person.png" alt="img8">
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!--User's username-->
-                                    <p><b>StevIvanov</b>- OMG where can i get one</p>
-                                </div>
-                            </div>
-                            <div class="userDetails">
-                                <div class="comment-data">
-                                    <div class="profilepic">
-                                        <div class="profile_img">
-                                            <div class="image">
-                                                <!-- User Profile Image -->
-                                                <img src="/static/images/person.png" alt="img8">
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!--User's username-->
-                                    <p><b>StevIvanov</b>- OMG where can i get one</p>
-                                </div>
-                            </div>
+                            {{/each}}
                         </div>
                     </div>
                 </div>
+
+                {{#if isAuthenticated}}
+                {{#unless isOwner}}
                 <div class="addComments">
                     <!-- Start Add Comments Form -->
                     <form method="#" action="#">
@@ -105,6 +80,9 @@
                         <button type="submit">Post</button>
                     </form>
                 </div>
+                {{/unless}}
+                {{/if}}
+                
             </div>
         </div>
     </div>
