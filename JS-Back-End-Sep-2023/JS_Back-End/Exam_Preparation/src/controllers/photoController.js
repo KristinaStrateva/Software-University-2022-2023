@@ -33,4 +33,11 @@ router.get('/catalog', async (req, res) => {
     res.render('photos/catalog', { photos });
 });
 
+router.get('/catalog/:photoId/details', async (req, res) => {
+    const photo = await photoManager.getPhotoById(req.params.photoId).lean();
+    const isOwner = req.user?._id == photo.owner._id;
+
+    res.render('photos/details', { photo, isOwner });
+});
+
 module.exports = router;
