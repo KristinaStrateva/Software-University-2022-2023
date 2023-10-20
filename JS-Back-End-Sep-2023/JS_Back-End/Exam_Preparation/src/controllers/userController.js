@@ -55,8 +55,6 @@ router.get('/:userId/profile', async (req, res) => {
     const photos = (await photoManager.getAllPhotos().lean()).filter(x => x.owner._id == userId);
     const photosAmount = photos.length;
 
-    console.log(photos);
-
     res.render('users/profile', { user, photos, photosAmount });
 });
 
