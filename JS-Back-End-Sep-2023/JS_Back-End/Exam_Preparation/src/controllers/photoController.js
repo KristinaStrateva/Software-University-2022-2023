@@ -36,7 +36,6 @@ router.get('/catalog', async (req, res) => {
 router.get('/catalog/:photoId/details', async (req, res) => {
     const photo = await photoManager.getPhotoById(req.params.photoId).lean();
     const isOwner = req.user?._id == photo.owner._id;
-    // const comments = await photoManager.getAllComments(req.params.photoId).lean();
     const areComments = photo.comments.length;
 
     res.render('photos/details', { photo, isOwner, areComments });
