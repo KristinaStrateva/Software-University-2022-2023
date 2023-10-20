@@ -47,7 +47,10 @@ router.get('/:photoId/delete', async (req, res) => {
         res.redirect('/photos/catalog');
 
     } catch (error) {
-        res.redirect(`/photos/catalog/${req.params.photoId}/details`, {error: extractErrorMessages(error)});
+        const photo = await photoManager.getPhotoById(req.params.photoId).lean();
+        const isOwner = req.user?._id == photo.owner._id;
+
+        res.render('photos/details', {error: 'Unsuccessfully deleted photo!', photo, isOwner});
     }
 });
 
