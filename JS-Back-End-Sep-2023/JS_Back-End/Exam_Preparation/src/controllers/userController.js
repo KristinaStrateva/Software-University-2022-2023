@@ -1,6 +1,7 @@
 const router = require('express').Router();
 
 const userManager = require('../managers/userManager');
+const photoManager = require('../managers/photoManager');
 const { extractErrorMessages } = require('../utils/errorHelpers');
 const { TOKEN_KEY } = require('../config/utilsConfig');
 
@@ -19,7 +20,7 @@ router.post('/login', async (req, res) => {
         res.redirect('/');
 
     } catch (error) {
-        res.render('users/login', {error: extractErrorMessages(error)});
+        res.render('users/login', { error: extractErrorMessages(error) });
     }
 });
 
@@ -33,12 +34,12 @@ router.post('/register', async (req, res) => {
     try {
         const token = await userManager.register({ username, email, password, rePassword });
 
-        res.cookie(TOKEN_KEY, token, {httpOnly: true});
+        res.cookie(TOKEN_KEY, token, { httpOnly: true });
 
         res.redirect('/');
 
     } catch (error) {
-        res.render('users/register', {error: extractErrorMessages(error)});
+        res.render('users/register', { error: extractErrorMessages(error) });
     }
 });
 
@@ -46,6 +47,17 @@ router.get('/logout', (req, res) => {
     res.clearCookie(TOKEN_KEY);
 
     res.redirect('/');
+});
+
+router.get('/:userId/profile', async (req, res) => {
+    const userId = req.params.userId;
+    const user = await userManager.getUserById(userId).lean();
+    const photos = (await photoManager.getAllPhotos().lean()).filter(x => x.owner._id == userId);
+    const photosAmount = photos.length;
+
+    console.log(photos);
+
+    res.render('users/profile', { user, photos, photosAmount });
 });
 
 module.exports = router;

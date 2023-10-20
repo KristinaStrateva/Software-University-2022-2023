@@ -1,7 +1,8 @@
 <div class="card">
     <div class="top">
         <div class="userDetails">
-            <a href="#" action="#" method="#">
+            {{#unless isAuthenticated}}
+            <a href="/users/{{owner._id}}/profile" alt="user img">
                 <div class="profilepic">
                     <div class="profile_img">
                         <div class="image">
@@ -10,6 +11,17 @@
                     </div>
                 </div>
             </a>
+            {{else}}
+            <div>
+                <div class="profilepic">
+                    <div class="profile_img">
+                        <div class="image">
+                            <img src="/images/person.png" alt="img8">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{/unless}}
             <h3>
                 <p>
                     {{owner.username}}

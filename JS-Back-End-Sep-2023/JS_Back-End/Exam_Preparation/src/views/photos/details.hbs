@@ -51,18 +51,7 @@
                     <div class="comments">
                         <div class="comments-top">
                             {{#each photo.comments}}
-                            <div class="userDetails">
-                                <div class="comment-data">
-                                    <div class="profilepic">
-                                        <div class="profile_img">
-                                            <div class="image">
-                                                <img src="/images/person.png" alt="img8">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <p><b>{{user.username}}</b>- {{comment}}</p>
-                                </div>
-                            </div>
+                                {{>comment}}
                             {{/each}}
                         </div>
                     </div>

@@ -36,3 +36,5 @@ exports.register = async (userData) => {
 
     return token;
 };
+
+exports.getUserById = (userId) => User.findById(userId);
