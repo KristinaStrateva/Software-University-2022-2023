@@ -1,44 +1,58 @@
 const router = require('express').Router();
 
-const photoManager = require('../managers/photoManager');
-const Photo = require('../models/Photo');
+const cryptoManager = require('../managers/cryptoManager');
+const Crypto = require('../models/Crypto');
 const { extractErrorMessages } = require('../utils/errorHelpers');
 
 router.get('/create', (req, res) => {
-    res.render('photos/create');
+    res.render('crypto/create');
 });
 
 router.post('/create', async (req, res) => {
     const {
         name,
-        age,
+        imageUrl,
+        price,
         description,
-        location,
-        imageUrl
+        paymentMethod
     } = req.body;
 
     try {
-        await photoManager.create({ name, age, description, location, imageUrl, owner: req.user._id });
+        await cryptoManager.create({ name, imageUrl, price, description, paymentMethod, owner: req.user._id });
 
-        res.redirect('/photos/catalog');
+        res.redirect('/crypto/catalog');
 
     } catch (error) {
-        res.render('photos/create', { error: extractErrorMessages(error) });
+        res.render('crypto/create', { error: extractErrorMessages(error) });
     }
 });
 
 router.get('/catalog', async (req, res) => {
-    const photos = await photoManager.getAllPhotos().lean();
+    try {
+        const cryptos = await cryptoManager.getAllCrypto().lean();
+        const hasCryptos = cryptos.length;
+    
+        res.render('crypto/catalog', { cryptos, hasCryptos });
 
-    res.render('photos/catalog', { photos });
+    } catch (error) {
+        res.redirect('/', { error: extractErrorMessages(error) });
+    }
 });
 
-router.get('/catalog/:photoId/details', async (req, res) => {
-    const photo = await photoManager.getPhotoById(req.params.photoId).lean();
-    const isOwner = req.user?._id == photo.owner._id;
-    const areComments = photo.comments.length;
+router.get('/catalog/:cryptoId/details', async (req, res) => {
+    try {
+        const crypto = await cryptoManager.getCryptoById(req.params.cryptoId).lean();
+        const isOwner = req.user?._id == crypto.owner._id;
+        const hasBought = crypto.buyCrypto.find(x => x.user._id == req.user?._id);
+    
+        res.render('crypto/details', { crypto, isOwner, hasBought });
 
-    res.render('photos/details', { photo, isOwner, areComments });
+    } catch (error) {
+        const cryptos = await cryptoManager.getAllCrypto().lean();
+        const hasCryptos = cryptos.length;
+
+        res.redirect('/crypto/catalog', { error: extractErrorMessages(error), cryptos, hasCryptos });
+    }
 });
 
 router.post('/catalog/:photoId/comments', async (req, res) => {

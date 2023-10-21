@@ -2,13 +2,15 @@
 <html lang="en">
 
 <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page - Crypto Web</title>
     <link rel="stylesheet" href="/css/styles.css">
-    <link rel="icon" type="image/x-icon" href="/images/free-30-instagram-stories-icons23_122570.png">
-    <title>Petstagram</title>
+    <link rel="icon" type="image/x-icon" href="/images/logo.png">
 </head>
 
 <body>
-
     {{#if error}}
     <div>
         <div class="errorContainer">
@@ -16,70 +18,30 @@
         </div>
     </div>
     {{/if}}
-
-    <header>
-        <nav class="navbar">
-            <div class="container">
-                <div class="logo">
-                    <a href="/">
-                        <img width="50px" src="/images/free-30-instagram-stories-icons23_122570.png" alt="img1">
-                    </a>
-                    <a class="home" href="/">
-                        <i>Petstagram</i>
-                    </a>
-                </div>
-
-                <div class="nav-links">
-                    <ul class="nav-group">
-                        <li class="nav-item">
-                            <a href="/photos/catalog">
-                                <i>Catalog</i>
-                            </a>
-                        </li>
-
-                        {{#if isAuthenticated}}
-                            <li class="nav-item">
-                                <a href="/photos/create">
-                                    <i>Add Photo</i>
-                                </a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a href="/users/{{user._id}}/profile">
-                                    <i>Profile</i>
-                                </a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a href="/users/logout">
-                                    <i>Logout</i>
-                                </a>
-                            </li>
-                        {{else}}
-                            <li class="nav-item">
-                                <a href="/users/login">
-                                    <i>Login</i>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="/users/register">
-                                    <i>Register</i>
-                                </a>
-                            </li>
-                        {{/if}}
-                    </ul>
-                </div>
-            </div>
+    
+    <header class="header">
+        <nav>
+            <img src="/images/logo.png" class="logo">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/crypto/catalog">All Crypto</a></li>
+                {{#if isAuthenticated}}
+                <li><a href="/search">Search</a></li>
+                <li><a href="/crypto/create">Create Offer</a></li>
+                <li><a href="/users/logout">Logout</a></li>
+                {{else}}
+                <li><a href="/users/login">Login</a></li>
+                <li><a href="/users/register">Register</a></li>
+                {{/if}}
+            </ul>
         </nav>
     </header>
 
     {{{body}}}
 
-    <div class="footer">
-        <span class="footer-section">
-            © 2023 SoftUni Back-End Exam
-        </span>
-    </div>
+    <footer>
+        <p>Back-End 2022</p>
+    </footer>
 
 </body>
 

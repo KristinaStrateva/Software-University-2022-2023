@@ -5,8 +5,8 @@ const generateToken = require('../utils/generateToken');
 
 const { SECRET } = require('../config/utilsConfig');
 
-exports.login = async (username, password) => {
-    const user = await User.findOne({ username });
+exports.login = async (email, password) => {
+    const user = await User.findOne({ email });
 
     if (!user) {
         throw new Error('Invalid username or password!');

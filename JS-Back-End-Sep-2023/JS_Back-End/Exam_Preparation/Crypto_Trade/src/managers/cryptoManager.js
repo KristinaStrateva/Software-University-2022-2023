@@ -1,10 +1,10 @@
-const Photo = require('../models/Photo');
+const Crypto = require('../models/Crypto');
 
-exports.getAllPhotos = () => Photo.find().populate('owner');
+exports.getAllCrypto = () => Crypto.find().populate('owner');
 
-exports.getPhotoById = (photoId) => Photo.findById(photoId).populate('owner').populate('comments.user');
+exports.getCryptoById = (cryptoId) => Crypto.findById(cryptoId).populate('owner').populate('buyCrypto.user');
 
-exports.create = (photoData) => Photo.create(photoData);
+exports.create = (cryptoData) => Crypto.create(cryptoData);
 
 exports.update = (photoId, photoData) => Photo.findByIdAndUpdate(photoId, photoData);
 
