@@ -89,7 +89,7 @@ export default function Counter(props) {
 
             {count < 0 && <p>Invalid counter!</p>}  {/* If count is less than 0 only then show the 'Invalid counter!' message */}
 
-            <button onClick={onDecrementClick}>-</button>
+            <button disabled={count < 0} onClick={onDecrementClick}>-</button>
             <button onClick={resetCounter}>Clear</button>
             <button onClick={onIncrementClick}>+</button>
         </div>
