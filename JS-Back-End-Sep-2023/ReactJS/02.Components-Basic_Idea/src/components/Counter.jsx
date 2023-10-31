@@ -31,10 +31,48 @@ export default function Counter(props) {
     //     warning = <p>Invalid counter!</p>
     // }
 
+    let message = null;
+
+    switch (count) {
+        case 0:
+            message = 'Let\'s go!';
+            break;
+
+        case 1:
+            message = 'First blood!';
+            break;
+
+        case 2:
+            message = 'Double kill!';
+            break;
+
+        case 3:
+            message = 'Tripple kill!';
+            break;
+
+        case 4:
+            message = 'Multi kill!';
+            break;
+
+        case 5:
+            message = 'Unstoppable!';
+            break;
+
+        case 6:
+            message = 'God like!';
+            break;
+
+        default:
+            message = 'M-m-m-monster kill!';
+            break;
+    }
+
     return (
         <div>
 
             <h3>Counter</h3>
+
+            <h4>{message}</h4>
 
             <p>{count}</p>
 
