@@ -1,20 +1,21 @@
 import { useEffect, useState } from 'react';
 import styles from './App.module.css';
+import Starwars from './Starwars';
 
 function App() {
     const [numbers, setNumbers] = useState([1, 2, 3, 4, 5, 6]);
     const [count, setCount] = useState(0);
 
     useEffect(() => {
-        console.log('Mount component')
+        // console.log('Mount component')
     }, []);
 
     useEffect(() => {
-        console.log(`Update component - ${numbers.length}`);
+        // console.log(`Update component - ${numbers.length}`);
     }, [numbers]);
 
     useEffect(() => {
-        setTimeout(() => setCount(c => c + 1), 1000);
+        // setTimeout(() => setCount(c => c + 1), 1000);
     }, [count]); // it will work incorrectly if the + button is clicked
 
     const onClick = () => {
@@ -23,6 +24,8 @@ function App() {
 
     return (
         <div className={styles.app}>
+            <Starwars />
+
             <h3>Counter: {count}</h3>
 
             <ul>
