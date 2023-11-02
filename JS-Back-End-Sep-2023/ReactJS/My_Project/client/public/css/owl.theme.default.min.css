@@ -50,7 +50,7 @@
     background: #D6D6D6;
     display: block;
     backface-visibility: visible;
-    /* -webkit-backface-visibility: visible; */
+    -webkit-backface-visibility: visible;
     transition: opacity .2s ease;
     border-radius: 30px;
 }
