@@ -25,7 +25,7 @@ export default function Search(props) {
 
             <div className="filter">
                 <span>Search Criteria:</span>
-                <select name="criteria" className="criteria" value="">
+                <select name="criteria" className="criteria">
                     <option value="">Not selected</option>
                     <option value="">First Name</option>
                     <option value="">Last Name</option>
