@@ -2,12 +2,13 @@ import { useEffect, useState } from "react";
 import UserItem from "./UserItem";
 import * as userService from "../services/userService";
 import CreateUserModal from "./CreateUserModal";
+import UserDetailsModal from "./UserDetailsModal";
 
 export default function Table() {
     const [users, setUsers] = useState([]);
     const [showCreateModal, setCreateModal] = useState(false);
-
-    console.log(users);
+    const [userInfo, setUserInfo] = useState(false);
+    const [selectedUser, setSelectedUser] = useState(null);
 
     useEffect(() => {
         userService.getAllUsers()
@@ -17,17 +18,48 @@ export default function Table() {
 
     const onCreateUserClick = () => {
         setCreateModal(true);
-
-
     }
 
     const hideCreateModal = () => {
         setCreateModal(false);
     }
 
+    const userCreateHandler = async (event) => {
+        event.preventDefault();
+
+        const data = Object.fromEntries(new FormData(event.currentTarget));
+
+        const newUser = await userService.createUser(data);
+
+        setUsers(state => [...state, newUser]);
+
+        setCreateModal(false);
+    }
+
+    const hideUserInfo = () => {
+        setUserInfo(false);
+    }
+
+    const onUserInfoClick = async (userId) => {
+        setSelectedUser(userId)
+        setUserInfo(true);
+    }
+
     return (
         <div className="table-wrapper">
-            {showCreateModal && <CreateUserModal hideModal={hideCreateModal} />}
+            {showCreateModal && (
+                <CreateUserModal
+                    hideModal={hideCreateModal}
+                    onUserCreate={userCreateHandler}
+                />
+            )}
+
+            {userInfo && (
+                <UserDetailsModal
+                    hideModal={hideUserInfo}
+                    userId={selectedUser}
+                />
+            )}
 
             <table className="table">
                 <thead>
@@ -87,7 +119,17 @@ export default function Table() {
                 <tbody>
 
                     {users.map(user => (
-                        <UserItem key={user._id} {...user} />
+                        <UserItem
+                            key={user._id}
+                            userId={user._id}
+                            firstName={user.firstName}
+                            lastName={user.lastName}
+                            email={user.email}
+                            phoneNumber={user.phoneNumber}
+                            imageUrl={user.imageUrl}
+                            createdAt={user.createdAt}
+                            onInfoClick={onUserInfoClick}
+                        />
                     ))}
 
                 </tbody>
