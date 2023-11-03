@@ -4,18 +4,23 @@ import * as userService from "../services/userService";
 import CreateUserModal from "./CreateUserModal";
 import UserDetailsModal from "./UserDetailsModal";
 import DeleteUserModal from "./DeleteUserModal";
+import Spinner from "./Spinner";
 
 export default function Table() {
     const [users, setUsers] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
     const [showCreateModal, setCreateModal] = useState(false);
     const [userInfo, setUserInfo] = useState(false);
     const [selectedUser, setSelectedUser] = useState(null);
     const [showDelete, setShowDelete] = useState(false);
 
     useEffect(() => {
+        setIsLoading(true);
+
         userService.getAllUsers()
             .then(result => setUsers(result))
-            .catch(err => console.log(err));
+            .catch(err => console.log(err))
+            .finally(() => setIsLoading(false));
     }, []);
 
     const onCreateUserClick = () => {
@@ -63,7 +68,7 @@ export default function Table() {
         } catch (error) {
             console.log(error.message);
         }
-        
+
         setShowDelete(false);
         setUsers(state => state.filter(user => user._id !== selectedUser));
     }
@@ -92,6 +97,8 @@ export default function Table() {
                 />
                 )
             }
+
+            {isLoading && <Spinner />}
 
             <table className="table">
                 <thead>
