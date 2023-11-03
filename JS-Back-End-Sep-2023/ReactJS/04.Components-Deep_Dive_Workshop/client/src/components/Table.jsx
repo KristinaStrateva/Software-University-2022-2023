@@ -3,12 +3,14 @@ import UserItem from "./UserItem";
 import * as userService from "../services/userService";
 import CreateUserModal from "./CreateUserModal";
 import UserDetailsModal from "./UserDetailsModal";
+import DeleteUserModal from "./DeleteUserModal";
 
 export default function Table() {
     const [users, setUsers] = useState([]);
     const [showCreateModal, setCreateModal] = useState(false);
     const [userInfo, setUserInfo] = useState(false);
     const [selectedUser, setSelectedUser] = useState(null);
+    const [showDelete, setShowDelete] = useState(false);
 
     useEffect(() => {
         userService.getAllUsers()
@@ -40,9 +42,30 @@ export default function Table() {
         setUserInfo(false);
     }
 
-    const onUserInfoClick = async (userId) => {
+    const onUserInfoClick = (userId) => {
         setSelectedUser(userId)
         setUserInfo(true);
+    }
+
+    const hideDeleteModal = () => {
+        setShowDelete(false);
+    }
+
+    const onDeleteClick = (userId) => {
+        setSelectedUser(userId);
+        setShowDelete(true);
+    }
+
+    const userDeleteHandler = async () => {
+        try {
+            await userService.deleteUser(selectedUser);
+
+        } catch (error) {
+            console.log(error.message);
+        }
+        
+        setShowDelete(false);
+        setUsers(state => state.filter(user => user._id !== selectedUser));
     }
 
     return (
@@ -60,6 +83,15 @@ export default function Table() {
                     userId={selectedUser}
                 />
             )}
+
+            {showDelete && 
+                (
+                <DeleteUserModal
+                    hideModal={hideDeleteModal}
+                    onDeleteUser={userDeleteHandler}
+                />
+                )
+            }
 
             <table className="table">
                 <thead>
@@ -129,6 +161,7 @@ export default function Table() {
                             imageUrl={user.imageUrl}
                             createdAt={user.createdAt}
                             onInfoClick={onUserInfoClick}
+                            onDeleteClick={onDeleteClick}
                         />
                     ))}
 
